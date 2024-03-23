@@ -1,43 +1,43 @@
-import { useEffect, useRef, useState } from 'react'
-import cx from '../cx'
-import data from '../data'
-import useIntersectionObserver from '@/hook/useIntersectionObserver'
+import { useEffect, useRef, useState } from 'react';
+import cx from '../cx';
+import data from '../data';
+import useIntersectionObserver from '@/hook/useIntersectionObserver';
 
 const ioOptions: IntersectionObserverInit = {
   threshold: 0,
-}
+};
 
 export const LazyImage = ({
   src,
   width,
   height,
 }: {
-  src: string
-  width: number
-  height: number
+  src: string;
+  width: number;
+  height: number;
 }) => {
-  const imgRef = useRef<HTMLImageElement>(null)
-  const [loaded, setLoaded] = useState(false)
-  const { entries, observerRef } = useIntersectionObserver(imgRef, ioOptions)
+  const imgRef = useRef<HTMLImageElement>(null);
+  const [loaded, setLoaded] = useState(false);
+  const { entries, observerRef } = useIntersectionObserver(imgRef, ioOptions);
 
   const onLoad = () => {
-    setLoaded(true)
-  }
+    setLoaded(true);
+  };
 
   useEffect(() => {
     if ('loading' in HTMLImageElement.prototype) {
-      imgRef.current!.setAttribute('src', src)
-      imgRef.current!.setAttribute('loading', 'lazy')
-      observerRef.current?.disconnect()
-      return
+      imgRef.current!.setAttribute('src', src);
+      imgRef.current!.setAttribute('loading', 'lazy');
+      observerRef.current?.disconnect();
+      return;
     }
 
-    const isVisible = entries[0]?.isIntersecting
+    const isVisible = entries[0]?.isIntersecting;
     if (isVisible) {
-      imgRef.current!.setAttribute('src', src)
-      observerRef.current?.disconnect()
+      imgRef.current!.setAttribute('src', src);
+      observerRef.current?.disconnect();
     }
-  }, [src, entries])
+  }, [src, entries]);
 
   return (
     <img
@@ -48,8 +48,8 @@ export const LazyImage = ({
       onLoad={onLoad}
       alt=""
     />
-  )
-}
+  );
+};
 
 const LazyLoad1 = () => {
   return (
@@ -60,7 +60,7 @@ const LazyLoad1 = () => {
         <LazyImage src={url} key={index} width={600} height={320} />
       ))}
     </>
-  )
-}
+  );
+};
 
-export default LazyLoad1
+export default LazyLoad1;

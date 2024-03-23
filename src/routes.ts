@@ -1,18 +1,18 @@
-import Accordions from './components/01_accordion'
-import TabMenus from './components/02_tabMenu'
-import Tooltips from './components/03_tooltip'
-import TextBoxes from './components/04_textBox'
-import LineClamps from './components/05_lineClamp'
-import LazyLoad1 from './components/06_lazyLoading/1_r'
-import LazyLoad2V from './components/06_lazyLoading/2_v'
-import LazyLoad3 from './components/06_lazyLoading/3_r'
-import InfiniteScrollR from './components/07_infiniteScroll/react'
-import InfiniteScrollV from './components/07_infiniteScroll/vanilla'
-import ScrollBox from './components/08_scrollBox'
-import ScrollSpy1 from './components/09_scrollSpy/1_r'
-import ScrollSpy2 from './components/09_scrollSpy/2_r'
-import ScrollSpy3V from './components/09_scrollSpy/3_v'
-import ScrollSpy4 from './components/09_scrollSpy/4_r'
+import Accordions from './components/01_accordion';
+import TabMenus from './components/02_tabMenu';
+import Tooltips from './components/03_tooltip';
+import TextBoxes from './components/04_textBox';
+import LineClamps from './components/05_lineClamp';
+import LazyLoad1 from './components/06_lazyLoading/1_r';
+import LazyLoad2V from './components/06_lazyLoading/2_v';
+import LazyLoad3 from './components/06_lazyLoading/3_r';
+import InfiniteScrollR from './components/07_infiniteScroll/react';
+import InfiniteScrollV from './components/07_infiniteScroll/vanilla';
+import ScrollBox from './components/08_scrollBox';
+import ScrollSpy1 from './components/09_scrollSpy/1_r';
+import ScrollSpy2 from './components/09_scrollSpy/2_r';
+import ScrollSpy3V from './components/09_scrollSpy/3_v';
+import ScrollSpy4 from './components/09_scrollSpy/4_r';
 
 export const routePaths = [
   '/',
@@ -43,21 +43,21 @@ export const routePaths = [
   '/selectBox',
   '/autoComplete',
   '/dnd',
-] as const
-export type ROUTE_PATH = (typeof routePaths)[number]
+] as const;
+export type ROUTE_PATH = (typeof routePaths)[number];
 
 type BaseRoute = {
-  key: ROUTE_PATH
-  link: ROUTE_PATH
-  name: string
-}
+  key: ROUTE_PATH;
+  link: ROUTE_PATH;
+  name: string;
+};
 export type ParentRoute = BaseRoute & {
-  children: ROUTE_PATH[]
-}
+  children: ROUTE_PATH[];
+};
 export type ChildRoute = BaseRoute & {
-  children: ((props: unknown) => JSX.Element) | null
-}
-export type ROUTE = ParentRoute | ChildRoute
+  children: ((props: unknown) => JSX.Element) | null;
+};
+export type ROUTE = ParentRoute | ChildRoute;
 
 export const routes: Record<ROUTE_PATH, ROUTE> = {
   '/': {
@@ -167,7 +167,12 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
     key: '/scrollSpy',
     link: '/scrollSpy/1_r',
     name: '09. 스크롤 스파이',
-    children: ['/scrollSpy/1_r', '/scrollSpy/2_r', '/scrollSpy/3_v', '/scrollSpy/4_r'],
+    children: [
+      '/scrollSpy/1_r',
+      '/scrollSpy/2_r',
+      '/scrollSpy/3_v',
+      '/scrollSpy/4_r',
+    ],
   },
   '/scrollSpy/1_r': {
     key: '/scrollSpy/1_r',
@@ -247,8 +252,11 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
     name: '18. D&D 리스트',
     children: null,
   },
-}
+};
 
-export const isParentRoute = (route: ROUTE): route is ParentRoute => Array.isArray(route.children)
+export const isParentRoute = (route: ROUTE): route is ParentRoute =>
+  Array.isArray(route.children);
 
-export const gnbRootList = (routes['/'] as ParentRoute).children.map(r => routes[r])
+export const gnbRootList = (routes['/'] as ParentRoute).children.map(
+  (r) => routes[r]
+);

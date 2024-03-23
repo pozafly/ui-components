@@ -1,6 +1,6 @@
-import { useState } from 'react'
-import cx from './cx'
-import data from './data'
+import { useState } from 'react';
+import cx from './cx';
+import data from './data';
 
 const TabItem = ({
   id,
@@ -8,26 +8,26 @@ const TabItem = ({
   current,
   toggle,
 }: {
-  id: string
-  title: string
-  current: boolean
-  toggle: () => void
+  id: string;
+  title: string;
+  current: boolean;
+  toggle: () => void;
 }) => {
   return (
     <li className={cx('tab', { current })} key={id} onClick={toggle}>
       {title}
     </li>
-  )
-}
+  );
+};
 
 const TabMenu1 = () => {
-  const [currentId, setCurrentId] = useState<string>(data[0].id)
+  const [currentId, setCurrentId] = useState<string>(data[0].id);
 
   const toggleItem = (id: string) => () => {
-    setCurrentId(id)
-  }
+    setCurrentId(id);
+  };
   const currentDescription =
-    data.find((item) => item.id === currentId)?.description || ''
+    data.find((item) => item.id === currentId)?.description || '';
 
   return (
     <>
@@ -48,7 +48,7 @@ const TabMenu1 = () => {
         <div className={cx('description')}>{currentDescription}</div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default TabMenu1
+export default TabMenu1;

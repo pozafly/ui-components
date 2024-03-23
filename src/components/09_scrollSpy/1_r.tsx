@@ -1,9 +1,11 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
-import cx from './cx'
-import data from './data'
-import ViewportContextProvider, { useViewportRect } from '@/context/viewportContext'
+import { useCallback, useEffect, useRef, useState } from 'react';
+import cx from './cx';
+import data from './data';
+import ViewportContextProvider, {
+  useViewportRect,
+} from '@/context/viewportContext';
 
-const HeaderHeight = 60
+const HeaderHeight = 60;
 
 const ListItem = ({
   id,
@@ -11,10 +13,10 @@ const ListItem = ({
   title,
   description,
 }: {
-  id: string
-  number: number
-  title: string
-  description: string
+  id: string;
+  number: number;
+  title: string;
+  description: string;
 }) => {
   return (
     <li id={id} data-number={number}>
@@ -29,70 +31,70 @@ const ListItem = ({
         ))}
       </div>
     </li>
-  )
-}
+  );
+};
 type ItemInfo = {
-  index: number
-  top: number
-  height: number
-  elem: HTMLElement
-} | null
+  index: number;
+  top: number;
+  height: number;
+  elem: HTMLElement;
+} | null;
 
 const ScrollSpy = () => {
-  const { top: viewportTop, scrollHeight } = useViewportRect()
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const itemsRef = useRef<ItemInfo[]>([])
-  const navsRef = useRef<(HTMLLIElement | null)[]>([])
+  const { top: viewportTop, scrollHeight } = useViewportRect();
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const itemsRef = useRef<ItemInfo[]>([]);
+  const navsRef = useRef<(HTMLLIElement | null)[]>([]);
 
   const setCurrentItem = useCallback(() => {
-    const scrollTop = viewportTop * -1
+    const scrollTop = viewportTop * -1;
     const target = itemsRef.current.find(
-      item =>
+      (item) =>
         item &&
         scrollTop >= item.top - HeaderHeight - item.height / 2 &&
-        scrollTop < item.top - HeaderHeight + item.height / 2,
-    )
+        scrollTop < item.top - HeaderHeight + item.height / 2
+    );
     if (target) {
-      setCurrentIndex(target.index)
+      setCurrentIndex(target.index);
       navsRef.current[target.index]?.scrollIntoView({
         block: 'nearest',
         inline: 'center',
         behavior: 'instant',
-      })
+      });
     }
-  }, [viewportTop])
+  }, [viewportTop]);
 
   const handleNavClick = useCallback((index: number) => {
-    const itemY = (itemsRef.current[index]?.top || 0) - HeaderHeight
+    const itemY = (itemsRef.current[index]?.top || 0) - HeaderHeight;
     window.scrollTo({
       top: itemY,
       behavior: 'smooth',
-    })
-  }, [])
+    });
+  }, []);
 
   useEffect(() => {
     const calculateItems = () => {
-      const scrollTop = document.scrollingElement!.scrollTop
+      const scrollTop = document.scrollingElement!.scrollTop;
       itemsRef.current = data.map((d, i) => {
-        const $item = document.getElementById(d.id)
-        if (!$item) return null
-        const { top, height } = $item.getBoundingClientRect()
-        return { elem: $item, top: top + scrollTop, height, index: i }
-      })
-    }
-    calculateItems()
+        const $item = document.getElementById(d.id);
+        if (!$item) return null;
+        const { top, height } = $item.getBoundingClientRect();
+        return { elem: $item, top: top + scrollTop, height, index: i };
+      });
+    };
+    calculateItems();
 
-    const resizeObserver = new ResizeObserver(calculateItems)
-    resizeObserver.observe(document.scrollingElement!)
+    const resizeObserver = new ResizeObserver(calculateItems);
+    resizeObserver.observe(document.scrollingElement!);
 
     return () => {
-      resizeObserver.disconnect()
-    }
-  }, [])
+      resizeObserver.disconnect();
+    };
+  }, []);
 
   useEffect(() => {
-    setCurrentItem()
-  }, [viewportTop])
+    setCurrentItem();
+  }, [viewportTop]);
 
   return (
     <div className={cx('ScrollSpy')}>
@@ -105,8 +107,8 @@ const ScrollSpy = () => {
             <li
               className={cx('navItem', { current: currentIndex === index })}
               key={id}
-              ref={r => {
-                navsRef.current[index] = r
+              ref={(r) => {
+                navsRef.current[index] = r;
               }}
             >
               <button onClick={() => handleNavClick(index)}>{index + 1}</button>
@@ -115,19 +117,19 @@ const ScrollSpy = () => {
         </ul>
       </header>
       <ul>
-        {data.map(item => (
+        {data.map((item) => (
           <ListItem {...item} number={item.index + 1} key={item.id} />
         ))}
       </ul>
     </div>
-  )
-}
+  );
+};
 
 const ScrollSpy1 = () => {
   return (
     <ViewportContextProvider>
       <ScrollSpy />
     </ViewportContextProvider>
-  )
-}
-export default ScrollSpy1
+  );
+};
+export default ScrollSpy1;

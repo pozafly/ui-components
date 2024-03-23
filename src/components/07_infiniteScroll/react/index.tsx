@@ -1,8 +1,13 @@
-import cx from '../cx'
-import { Datum } from './useInfiniteFetcher'
-import useInfiniteScroll from './useInfiniteScroll'
+import cx from '../cx';
+import { Datum } from './useInfiniteFetcher';
+import useInfiniteScroll from './useInfiniteScroll';
 
-const ListItem = ({ id, number, title, description }: Datum & { number: number }) => {
+const ListItem = ({
+  id,
+  number,
+  title,
+  description,
+}: Datum & { number: number }) => {
   return (
     <li>
       <p>
@@ -12,11 +17,11 @@ const ListItem = ({ id, number, title, description }: Datum & { number: number }
       </p>
       <div>{description}</div>
     </li>
-  )
-}
+  );
+};
 
 const InfiniteScrollR = () => {
-  const { data, state, moreRef } = useInfiniteScroll()
+  const { data, state, moreRef } = useInfiniteScroll();
 
   return (
     <>
@@ -24,13 +29,15 @@ const InfiniteScrollR = () => {
       <h3>#1. React</h3>
       <ul>
         {data.map((page, i) =>
-          page.map((item, j) => <ListItem {...item} number={i * 20 + j + 1} key={`${i}_${j}`} />),
+          page.map((item, j) => (
+            <ListItem {...item} number={i * 20 + j + 1} key={`${i}_${j}`} />
+          ))
         )}
       </ul>
       <div id="fetchMore" ref={moreRef} />
       {state === 'loading' && <div className={cx('spinner')} />}
     </>
-  )
-}
+  );
+};
 
-export default InfiniteScrollR
+export default InfiniteScrollR;

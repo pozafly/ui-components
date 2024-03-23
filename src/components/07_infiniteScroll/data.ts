@@ -219,7 +219,8 @@ const data = [
   {
     index: 28,
     id: '658ec0f22fabf53d8d30c8c6',
-    title: 'Cupidatat id ipsum occaecat culpa enim non labore cupidatat culpa excepteur.',
+    title:
+      'Cupidatat id ipsum occaecat culpa enim non labore cupidatat culpa excepteur.',
     description:
       'Ex do nisi Lorem commodo consequat est tempor dolor aliquip esse ex magna aliquip. Duis ea cillum elit sit est aute aute non duis qui. Minim minim consequat minim id consectetur sint. Excepteur aliqua nisi esse velit laborum aliqua pariatur aliquip ad culpa consequat anim ut. Ut excepteur ea excepteur eiusmod consectetur est incididunt qui cupidatat officia exercitation consequat.\r\nAliqua nisi fugiat consectetur ad ad sit fugiat nostrud Lorem. Culpa non duis id reprehenderit officia ad dolor sunt laboris do in aute. Deserunt id irure nulla ipsum proident voluptate id.\r\nOccaecat cupidatat reprehenderit sunt nulla ullamco id ad cillum nisi excepteur id deserunt amet. Duis ut veniam minim anim incididunt amet. Laboris quis velit minim aliquip veniam velit. Sunt consequat ex reprehenderit velit laborum elit ut proident voluptate cillum do. Cillum reprehenderit non dolor ad sit deserunt voluptate cillum incididunt.\r\n',
   },
@@ -234,7 +235,8 @@ const data = [
   {
     index: 30,
     id: '658ec0f239c5bf0cf8c89d79',
-    title: 'Cupidatat officia occaecat consectetur ipsum Lorem fugiat adipisicing.',
+    title:
+      'Cupidatat officia occaecat consectetur ipsum Lorem fugiat adipisicing.',
     description:
       'Esse cupidatat nisi elit do Lorem. Tempor irure consequat ea esse nisi occaecat. Reprehenderit dolore est adipisicing velit officia sunt cupidatat exercitation. In cillum adipisicing minim aliquip. Adipisicing consectetur aute ex enim laboris commodo id ex. Deserunt nulla eu eiusmod amet reprehenderit. Ullamco anim esse deserunt exercitation ut est irure sit velit culpa.\r\nEst adipisicing laboris ad nisi enim commodo fugiat. Nulla excepteur anim et sint irure duis ex eu veniam do et adipisicing et. Sint ullamco quis officia ad occaecat labore irure.\r\n',
   },
@@ -302,7 +304,8 @@ const data = [
   {
     index: 39,
     id: '658ec0f22d7c6e01fa8f7d44',
-    title: 'Pariatur amet proident minim quis fugiat minim est qui aute consequat.',
+    title:
+      'Pariatur amet proident minim quis fugiat minim est qui aute consequat.',
     description:
       'Dolore aliqua consectetur adipisicing dolore Lorem elit in sit nulla qui mollit tempor eiusmod duis. Cupidatat est ex et excepteur magna sunt duis adipisicing eiusmod non. Nisi culpa dolor id veniam in. Do reprehenderit id duis pariatur non eu amet adipisicing sit quis cupidatat aliqua.\r\n',
   },
@@ -324,14 +327,16 @@ const data = [
   {
     index: 42,
     id: '658ec0f2ca694049f4bb19b7',
-    title: 'Labore exercitation quis fugiat ullamco duis do labore deserunt ea occaecat in.',
+    title:
+      'Labore exercitation quis fugiat ullamco duis do labore deserunt ea occaecat in.',
     description:
       'Magna laborum sunt cillum minim consequat ullamco velit laboris aliqua magna. Culpa pariatur cupidatat aliquip ex consectetur eiusmod incididunt ipsum ut. Quis eu aliquip dolore quis nisi esse aliqua. Exercitation laborum incididunt fugiat velit do dolore pariatur mollit reprehenderit aliquip. Minim pariatur deserunt magna nostrud nisi amet occaecat occaecat minim pariatur voluptate.\r\n',
   },
   {
     index: 43,
     id: '658ec0f25e62e6c1df70b729',
-    title: 'Laboris non tempor non quis ad culpa. Irure pariatur consequat deserunt et esse.',
+    title:
+      'Laboris non tempor non quis ad culpa. Irure pariatur consequat deserunt et esse.',
     description:
       'Quis nulla est laboris aute incididunt. Reprehenderit amet est nisi ipsum. Id ullamco incididunt reprehenderit officia do dolor excepteur dolore minim consectetur qui incididunt ea dolore. Ipsum esse esse Lorem enim excepteur enim occaecat quis officia eiusmod elit. Velit ipsum reprehenderit tempor pariatur incididunt ullamco enim.\r\n',
   },
@@ -370,7 +375,8 @@ const data = [
   {
     index: 48,
     id: '658ec0f22d171801d22dc7dc',
-    title: 'Consectetur aliqua fugiat ad sint consectetur mollit duis labore Lorem aliquip.',
+    title:
+      'Consectetur aliqua fugiat ad sint consectetur mollit duis labore Lorem aliquip.',
     description:
       'Irure ad id dolor fugiat nisi Lorem pariatur ullamco exercitation exercitation aute. Ea cillum culpa tempor proident ex elit laborum occaecat magna consectetur. Ex cillum ut ipsum minim aute Lorem laboris commodo in esse. Elit tempor mollit excepteur proident voluptate ipsum sit.\r\n',
   },
@@ -382,6 +388,6 @@ const data = [
     description:
       'Sunt quis minim eu deserunt cillum consectetur minim magna. Ut officia consequat veniam quis mollit cillum ea sint. Eu ex cupidatat est reprehenderit enim anim pariatur.\r\nVeniam cillum voluptate non fugiat labore. Cillum mollit sint sit id tempor sunt nisi excepteur ullamco fugiat sit sunt. Mollit sit ullamco adipisicing ipsum sit eu incididunt dolor sint adipisicing magna dolor ad aliquip. Occaecat elit id consectetur deserunt fugiat cupidatat officia.\r\n',
   },
-]
+];
 
-export default data
+export default data;

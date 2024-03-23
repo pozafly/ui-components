@@ -1,6 +1,6 @@
-import cx from './cx'
-import ScrollBox_React from './react'
-import ScrollBox_Vanilla from './vanilla'
+import cx from './cx';
+import ScrollBox_React from './react';
+import ScrollBox_Vanilla from './vanilla';
 
 const ScrollBox = () => {
   return (
@@ -9,7 +9,7 @@ const ScrollBox = () => {
       <ScrollBox_React />
       <ScrollBox_Vanilla />
     </div>
-  )
-}
+  );
+};
 
-export default ScrollBox
+export default ScrollBox;

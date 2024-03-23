@@ -1,5 +1,5 @@
-import cx from './cx'
-import data from './data'
+import cx from './cx';
+import data from './data';
 
 const TabItem = ({
   id,
@@ -7,15 +7,15 @@ const TabItem = ({
   description,
   initialChecked,
 }: {
-  id: string
-  title: string
-  description: string
-  initialChecked: boolean
+  id: string;
+  title: string;
+  description: string;
+  initialChecked: boolean;
 }) => {
   return (
     <li className={cx('item')} key={id}>
       <input
-        type='radio'
+        type="radio"
         className={cx('input')}
         name={'tabmenu'}
         id={id}
@@ -26,8 +26,8 @@ const TabItem = ({
       </label>
       <div className={cx('description')}>{description}</div>
     </li>
-  )
-}
+  );
+};
 
 const TabMenu5 = () => {
   return (
@@ -41,7 +41,7 @@ const TabMenu5 = () => {
         ))}
       </ul>
     </>
-  )
-}
+  );
+};
 
-export default TabMenu5
+export default TabMenu5;

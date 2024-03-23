@@ -1,9 +1,9 @@
-import TextBox1 from './1_r'
-import TextBox2 from './2_r'
-import TextBox3 from './3_r'
-import TextBox4V from './4_v'
-import TextBox5 from './5_r'
-import cx from './cx'
+import TextBox1 from './1_r';
+import TextBox2 from './2_r';
+import TextBox3 from './3_r';
+import TextBox4V from './4_v';
+import TextBox5 from './5_r';
+import cx from './cx';
 
 const TextBoxes = () => {
   return (
@@ -15,7 +15,7 @@ const TextBoxes = () => {
       <TextBox4V />
       <TextBox5 />
     </div>
-  )
-}
+  );
+};
 
-export default TextBoxes
+export default TextBoxes;

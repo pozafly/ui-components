@@ -1,16 +1,16 @@
 const vanillaIntersectionObserver = (
   $elem: HTMLElement,
   options: IntersectionObserverInit,
-  callback: (entries: IntersectionObserverEntry[]) => void,
+  callback: (entries: IntersectionObserverEntry[]) => void
 ) => {
   const handleIntersect = (entries: IntersectionObserverEntry[]) => {
-    if (!$elem) return
-    callback(entries)
-  }
-  const observer = new IntersectionObserver(handleIntersect, options)
-  observer.observe($elem)
+    if (!$elem) return;
+    callback(entries);
+  };
+  const observer = new IntersectionObserver(handleIntersect, options);
+  observer.observe($elem);
 
-  return observer
-}
+  return observer;
+};
 
-export default vanillaIntersectionObserver
+export default vanillaIntersectionObserver;

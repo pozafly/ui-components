@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from 'react'
-import cx from './cx'
-import data from './data'
+import { useEffect, useRef, useState } from 'react';
+import cx from './cx';
+import data from './data';
 
 const TabItem = ({
   id,
@@ -8,17 +8,17 @@ const TabItem = ({
   current,
   toggle,
 }: {
-  id: string
-  title: string
-  current: boolean
-  toggle: () => void
+  id: string;
+  title: string;
+  current: boolean;
+  toggle: () => void;
 }) => {
   return (
     <li className={cx('tab', { current })} key={id} onClick={toggle}>
       {title}
     </li>
-  )
-}
+  );
+};
 
 const Description = ({
   id,
@@ -26,21 +26,22 @@ const Description = ({
   description,
   toggle,
 }: {
-  id: string
-  current: boolean
-  description: string
-  toggle: () => void
+  id: string;
+  current: boolean;
+  description: string;
+  toggle: () => void;
 }) => {
-  const descRef = useRef<HTMLDivElement>(null)
+  const descRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (descRef.current) {
-      descRef.current.addEventListener('beforematch', toggle)
+      descRef.current.addEventListener('beforematch', toggle);
     }
     return () => {
-      if (descRef.current) descRef.current.removeEventListener('beforematch', toggle)
-    }
-  }, [toggle])
+      if (descRef.current)
+        descRef.current.removeEventListener('beforematch', toggle);
+    };
+  }, [toggle]);
 
   return (
     <div
@@ -51,17 +52,17 @@ const Description = ({
     >
       {description}
     </div>
-  )
-}
+  );
+};
 
 const TabMenu6 = () => {
-  const parentRef = useRef<HTMLDivElement>(null)
-  const headerRef = useRef<HTMLUListElement>(null)
-  const [currentId, setCurrentId] = useState<string>(data[0].id)
+  const parentRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLUListElement>(null);
+  const [currentId, setCurrentId] = useState<string>(data[0].id);
 
   const toggleItem = (id: string) => () => {
-    setCurrentId(id)
-  }
+    setCurrentId(id);
+  };
 
   return (
     <>
@@ -70,16 +71,26 @@ const TabMenu6 = () => {
       </h3>
       <div className={cx('container', 'tabMenu6')} ref={parentRef}>
         <ul className={cx('tabList')} ref={headerRef}>
-          {data.map(d => (
-            <TabItem {...d} key={d.id} current={currentId === d.id} toggle={toggleItem(d.id)} />
+          {data.map((d) => (
+            <TabItem
+              {...d}
+              key={d.id}
+              current={currentId === d.id}
+              toggle={toggleItem(d.id)}
+            />
           ))}
         </ul>
-        {data.map(d => (
-          <Description {...d} key={d.id} current={currentId === d.id} toggle={toggleItem(d.id)} />
+        {data.map((d) => (
+          <Description
+            {...d}
+            key={d.id}
+            current={currentId === d.id}
+            toggle={toggleItem(d.id)}
+          />
         ))}
       </div>
     </>
-  )
-}
+  );
+};
 
-export default TabMenu6
+export default TabMenu6;

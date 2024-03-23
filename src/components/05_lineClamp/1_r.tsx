@@ -1,28 +1,33 @@
-import { useEffect, useRef, useState } from 'react'
-import cx from './cx'
-import data from './data'
-import { measureLines } from '@/service/util'
+import { useEffect, useRef, useState } from 'react';
+import cx from './cx';
+import data from './data';
+import { measureLines } from '@/service/util';
 
 const LineClampedText = ({ text }: { text: string }) => {
-  const elemRef = useRef<HTMLDivElement>(null)
-  const [isClamped, toggleClamped] = useState(true)
+  const elemRef = useRef<HTMLDivElement>(null);
+  const [isClamped, toggleClamped] = useState(true);
 
   useEffect(() => {
     if (text && elemRef.current) {
-      const measuredLines = measureLines(elemRef.current, text)
-      toggleClamped(measuredLines > 3)
+      const measuredLines = measureLines(elemRef.current, text);
+      toggleClamped(measuredLines > 3);
     }
-  }, [text])
+  }, [text]);
 
   return (
     <div className={cx('content', { clamped: isClamped })}>
       <div className={cx('text')} ref={elemRef} style={{ WebkitLineClamp: 3 }}>
         {text}
       </div>
-      {isClamped && <button className={cx('buttonMore')} onClick={() => toggleClamped(false)} />}
+      {isClamped && (
+        <button
+          className={cx('buttonMore')}
+          onClick={() => toggleClamped(false)}
+        />
+      )}
     </div>
-  )
-}
+  );
+};
 
 const LineClamp1 = () => {
   return (
@@ -34,7 +39,7 @@ const LineClamp1 = () => {
         <LineClampedText text={text} key={i} />
       ))}
     </>
-  )
-}
+  );
+};
 
-export default LineClamp1
+export default LineClamp1;

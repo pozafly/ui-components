@@ -1,11 +1,11 @@
-import { useEffect, useRef, useState } from 'react'
-import cx from '../cx'
-import data from '../data'
-import useIntersectionObserver from '@/hook/useIntersectionObserver'
+import { useEffect, useRef, useState } from 'react';
+import cx from '../cx';
+import data from '../data';
+import useIntersectionObserver from '@/hook/useIntersectionObserver';
 
 const ioOptions: IntersectionObserverInit = {
   threshold: 0,
-}
+};
 
 const Wrapper = ({
   url,
@@ -13,12 +13,12 @@ const Wrapper = ({
   height,
   children,
 }: {
-  url: string
-  width: number
-  height: number
-  children: React.ReactNode
+  url: string;
+  width: number;
+  height: number;
+  children: React.ReactNode;
 }) => {
-  const smallSizeUrl = url.replace('/600/320', '/60/32')
+  const smallSizeUrl = url.replace('/600/320', '/60/32');
 
   return (
     <div
@@ -31,40 +31,48 @@ const Wrapper = ({
     >
       {children}
     </div>
-  )
-}
+  );
+};
 
-const LazyImage = ({ src, width, height }: { src: string; width: number; height: number }) => {
-  const imgRef = useRef<HTMLImageElement>(null)
-  const [loaded, setLoaded] = useState(false)
-  const { entries, observerRef } = useIntersectionObserver(imgRef, ioOptions)
+const LazyImage = ({
+  src,
+  width,
+  height,
+}: {
+  src: string;
+  width: number;
+  height: number;
+}) => {
+  const imgRef = useRef<HTMLImageElement>(null);
+  const [loaded, setLoaded] = useState(false);
+  const { entries, observerRef } = useIntersectionObserver(imgRef, ioOptions);
 
   const onLoad = () => {
-    setLoaded(true)
-  }
+    setLoaded(true);
+  };
 
   useEffect(() => {
-    const imgElement = imgRef.current
-    if (!imgElement) return
+    const imgElement = imgRef.current;
+    if (!imgElement) return;
 
     if ('loading' in HTMLImageElement.prototype) {
-      imgElement.setAttribute('src', src)
-      imgElement.setAttribute('loading', 'lazy')
-      observerRef.current?.disconnect()
-      return
+      imgElement.setAttribute('src', src);
+      imgElement.setAttribute('loading', 'lazy');
+      observerRef.current?.disconnect();
+      return;
     }
 
-    const isVisible = entries[0]?.isIntersecting
+    const isVisible = entries[0]?.isIntersecting;
     if (isVisible) {
-      imgElement.addEventListener('load', onLoad, { once: true })
-      imgElement.setAttribute('src', src)
-      observerRef.current?.disconnect()
+      imgElement.addEventListener('load', onLoad, { once: true });
+      imgElement.setAttribute('src', src);
+      observerRef.current?.disconnect();
     }
 
     return () => {
-      imgElement.removeEventListener('load', onLoad)
-    }
-  }, [src, entries, observerRef])
+      imgElement.removeEventListener('load', onLoad);
+    };
+  }, [src, entries, observerRef]);
 
   return (
     <Wrapper url={src} width={width} height={height}>
@@ -78,8 +86,8 @@ const LazyImage = ({ src, width, height }: { src: string; width: number; height:
         alt=""
       />
     </Wrapper>
-  )
-}
+  );
+};
 
 const LazyLoad3 = () => {
   return (
@@ -92,7 +100,7 @@ const LazyLoad3 = () => {
         <LazyImage src={url} width={600} height={320} key={index} />
       ))}
     </>
-  )
-}
+  );
+};
 
-export default LazyLoad3
+export default LazyLoad3;

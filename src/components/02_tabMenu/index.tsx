@@ -1,10 +1,10 @@
-import TabMenu1 from './1_r'
-import TabMenu2 from './2_r'
-import TabMenu3 from './3_r'
-import TabMenu4V from './4_v'
-import TabMenu5 from './5_r'
-import TabMenu6 from './6_r'
-import cx from './cx'
+import TabMenu1 from './1_r';
+import TabMenu2 from './2_r';
+import TabMenu3 from './3_r';
+import TabMenu4V from './4_v';
+import TabMenu5 from './5_r';
+import TabMenu6 from './6_r';
+import cx from './cx';
 
 const TabMenus = () => {
   return (
@@ -17,7 +17,7 @@ const TabMenus = () => {
       <TabMenu5 />
       <TabMenu6 />
     </div>
-  )
-}
+  );
+};
 
-export default TabMenus
+export default TabMenus;

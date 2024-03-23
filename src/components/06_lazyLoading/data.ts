@@ -59,6 +59,6 @@ const data = [
   'https://loremflickr.com/600/320?lock=58',
   'https://loremflickr.com/600/320?lock=59',
   'https://loremflickr.com/600/320?lock=60',
-]
+];
 
-export default data
+export default data;

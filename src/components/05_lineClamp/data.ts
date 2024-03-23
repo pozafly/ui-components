@@ -20,6 +20,6 @@ Debitis aut, itaque voluptate soluta libero provident explicabo, iusto doloribus
 Veniam beatae dolores commodi consequatur expedita minus aut blanditiis pariatur fuga error optio delectus, `,
 
   `Dolorum iure debitis tempore, voluptas enim maxime voluptate in, voluptatem omnis facilis asperiores distinctio eius necessitatibus placeat autem quod cumque suscipit nulla non quaerat odio iste atque consequuntur eveniet. Natus.`,
-]
+];
 
-export default data
+export default data;

@@ -99,6 +99,6 @@ const data = [
     imgUrl: 'https://loremflickr.com/250/400?lock=20',
     description: 'ipsum aliquip nisi aliqua labore',
   },
-]
+];
 
-export default data
+export default data;

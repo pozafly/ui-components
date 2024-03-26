@@ -6,7 +6,7 @@ const routePaths = [
   '/test2/react',
 ] as const;
 
-type ROUTE_PATH = (typeof routePaths)[number];
+export type ROUTE_PATH = (typeof routePaths)[number];
 
 type BaseRoute = {
   key: ROUTE_PATH;

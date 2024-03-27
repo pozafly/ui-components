@@ -1,7 +1,12 @@
 import Accordions from './components/01_accordion';
+import Test2_Vanilla from './components/test2/vanilla';
+import Test2_React from './components/test2/react';
 
 export const routePaths = [
   '/',
+  '/test2',
+  '/test2/vanilla',
+  '/test2/react',
   '/accordion',
   // '/tabMenu',
   // '/tooltip',
@@ -70,6 +75,24 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
       // '/autoComplete',
       // '/dnd',
     ],
+  },
+  '/test2': {
+    key: '/test2',
+    link: '/test2',
+    name: 'test2',
+    children: ['/test2/vanilla', '/test2/react'],
+  },
+  '/test2/vanilla': {
+    key: '/test2/vanilla',
+    link: '/test2/vanilla',
+    name: '바닐라',
+    children: Test2_React,
+  },
+  '/test2/react': {
+    key: '/test2/react',
+    link: '/test2/vanilla',
+    name: '리액트',
+    children: Test2_Vanilla,
   },
   '/accordion': {
     key: '/accordion',

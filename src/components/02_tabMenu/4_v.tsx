@@ -7,10 +7,12 @@ const buildTabMenu = ({ id, title }: { id: string; title: string }) => {
   const $li = document.createElement('li');
   $li.classList.add(cx('tab'));
   $li.textContent = title;
+  $li.setAttribute('data-id', id);
+
   return $li;
 };
 
-const buildDescriptions = ({
+const buildDescription = ({
   id,
   description,
 }: {
@@ -24,16 +26,36 @@ const buildDescriptions = ({
 };
 
 const initiator = (wrapper: HTMLDivElement) => {
+  let currentId: string = data[0].id;
+
   const $container = document.createElement('div');
-  $container.className = cx('container', 'tabMenu2');
+  $container.classList.add(cx('container'), cx('tabMenu2'));
 
   const $tabUl = document.createElement('ul');
-  $tabUl.className = cx('tabList');
+  $tabUl.classList.add(cx('tabList'));
 
   const $tabList = data.map(buildTabMenu);
-  const $desc = data.map(buildDescriptions);
+  const $desc = data.map(buildDescription);
 
-  $tabUl.append($tabList, $desc);
+  $tabUl.append(...$tabList);
+  $container.append($tabUl, ...$desc);
+
+  const handleClickTab = (e: Event) => {
+    const $el = e.target as HTMLElement;
+    if (!$el.classList.contains(cx('tab'))) return;
+
+    currentId = $el.dataset.id || data[0].id;
+    $tabList.forEach(($item, index) => {
+      $item.classList.toggle(cx('current'), currentId === $item.dataset.id);
+      $desc[index].classList.toggle(
+        cx('current', currentId === $item.dataset.id)
+      );
+    });
+  };
+
+  $tabUl.addEventListener('click', handleClickTab);
+  wrapper.append($container);
+  $tabList[0].click();
 };
 
 const TabMenu4 = () => <VanillaWrapper title="#4" initiator={initiator} />;
